@@ -30,6 +30,14 @@ class BaseController extends Controller
 	protected $helpers = [];
 
 	/**
+	 * Instance of the main Request object.
+	 *
+	 * @var HTTP\IncomingRequest
+	 */
+	protected $request;
+
+
+	/**
 	 * Constructor.
 	 *
 	 * @param RequestInterface  $request
@@ -46,5 +54,6 @@ class BaseController extends Controller
 		//--------------------------------------------------------------------
 		// E.g.: $this->session = \Config\Services::session();
 		// $this->variabel = "ini variabel protected dari Base Controller";
+
 	}
 }

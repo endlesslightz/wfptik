@@ -12,17 +12,18 @@
                 </div>
                 <div class="card-body">
                     <h1>Tambah Anggota</h1>
-                    <form method="post" action="insert" enctype="multipart/form-data">
+                    <form action="insert" method="post" enctype="multipart/form-data">
+                        <?= csrf_field(); ?>
                         <div class="row mb-4">
                             <div class="col">
                                 <div class="form-outline">
-                                    <input type="text" id="nd" name="namadepan" class="form-control" />
+                                    <input type="text" id="nd" name="namadepan" class="form-control" required />
                                     <label class="form-label" for="nd">Nama depan</label>
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="form-outline">
-                                    <input type="text" id="nb" name="namabelakang" class="form-control" />
+                                    <input type="text" id="nb" name="namabelakang" class="form-control" required />
                                     <label class="form-label" for="nb">Nama belakang</label>
                                 </div>
                             </div>
@@ -48,7 +49,7 @@
                             </div>
                         </div>
                         Jenis Kelamin : <div class="form-check form-check-inline mb-4 mx-3">
-                            <input class="form-check-input" type="radio" name="jeniskelamin" id="flexRadioDefault1" value="laki-laki" />
+                            <input class="form-check-input" type="radio" name="jeniskelamin" id="flexRadioDefault1" value="laki-laki" checked />
                             <label class="form-check-label" for="flexRadioDefault1"> Laki-laki </label>
                         </div>
 

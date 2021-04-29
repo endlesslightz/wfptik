@@ -10,14 +10,18 @@
                 <div class="card-header py-3">
                     <h5 class="mb-0 text-center"><strong>Hello, <?= $nama ?> !</strong></h5>
                 </div>
-                <?php if (session()->getflashdata('sukses') != '') { ?>
+
+
+                <?php if (session()->getFlashdata('label') != '') { ?>
                     <div class="alert alert-success" role="alert">
-                        <?= session()->getflashdata('sukses'); ?>
+                        <?= session()->getFlashdata('label'); ?>
                     </div>
                 <?php } ?>
+
+
                 <div class="card-body">
                     <h1>Daftar Anggota</h1>
-                    <a href="user/create" class="btn btn-success btn-rounded mb-3">Tambah Anggota</a>
+                    <a href="<?= base_url('admin/user/create'); ?>" class="btn btn-success btn-rounded mb-3">Tambah Anggota</a>
                     <table class="table table-bordered table-striped">
                         <thead>
                             <tr>

@@ -45,16 +45,16 @@ class User extends BaseController
     public function insert()
     {
         $userModel = new UserModel();
-        $nama =  $this->request->getVar('namadepan') . " " . $this->request->getVar('namabelakang');
-        // dd($this->request->getVar());
+        $nama = $this->request->getVar('namadepan') . " " . $this->request->getVar('namabelakang');
         if ($this->request->getFile('avatar')->getName() != '') {
             $avatar = $this->request->getFile('avatar');
-            $avatar->move(ROOTPATH . 'public/img/profil');
-            $namaavatar = $avatar->getName();
+            $namaavatar = $avatar->getRandomName();
+            $avatar->move(ROOTPATH . 'public/img/profil', $namaavatar);
         } else {
             $namaavatar = 'default.jpg';
         }
-        $data = [
+
+        $input = [
             'nama' => $nama,
             'alamat' => $this->request->getVar('alamat'),
             'tempat_lahir' => $this->request->getVar('tempatlahir'),
@@ -64,11 +64,11 @@ class User extends BaseController
             'email' => $this->request->getVar('email'),
             'username' => $this->request->getVar('username'),
             'password' => md5($this->request->getVar('password')),
-            'avatar' => $namaavatar,
+            'avatar' => $namaavatar
         ];
-        $userModel->save($data);
+        $userModel->save($input);
 
-        session()->setFlashdata('sukses', 'Data pos berhasil ditambahkan');
+        session()->setFlashdata('label', 'Data anggota berhasil ditambahkan');
         return redirect()->to('/admin/user');
     }
 }
