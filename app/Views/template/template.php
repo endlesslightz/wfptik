@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="<?= base_url(); ?>/css/mdb.min.css" />
     <!-- Custom styles -->
     <link rel="stylesheet" href="<?= base_url(); ?>/css/admin.css" />
+    <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>/datatables/datatables.min.css" />
+    <script type="text/javascript" src="<?= base_url(); ?>/datatables/jQuery-3.3.1/jquery-3.3.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js" integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw==" crossorigin="anonymous"></script>
 </head>
 
@@ -144,6 +146,8 @@
     <script type="text/javascript" src="<?= base_url(); ?>/js/mdb.min.js"></script>
     <!-- Custom scripts -->
     <script type="text/javascript" src="<?= base_url(); ?>/js/admin.js"></script>
+    <script type="text/javascript" src="<?= base_url(); ?>/datatables/datatables.min.js"></script>
+
 
 </body>
 

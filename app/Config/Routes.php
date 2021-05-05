@@ -33,7 +33,10 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'admin\dashboard::index');
 $routes->get('/admin/user/create', 'admin\user::create');
-$routes->get('/admin/user/insert', 'admin\user::insert');
+$routes->get('/admin/user/getdata', 'admin\user::getdata');
+$routes->get('/admin/user/getform', 'admin\user::getform');
+$routes->post('/admin/user/insert', 'admin\user::insert');
+$routes->post('/admin/user/insertv2', 'admin\user::insertv2');
 $routes->get('/admin/user/(:segment)', 'admin\user::detail/$1');
 // $routes->get('/admin/user2/(:any)', 'admin\user::detail2/$1');
 
