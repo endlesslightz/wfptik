@@ -22,7 +22,9 @@
                 <div class="card-body">
                     <h1>Daftar Anggota</h1>
                     <!-- <a href="<?= base_url('admin/user/create'); ?>" class="btn btn-success btn-rounded mb-3">Tambah Anggota</a> -->
+
                     <div id="viewdata"></div>
+
                 </div>
 
             </div>
@@ -30,14 +32,14 @@
         <!-- Section: Main chart -->
 
     </div>
-
     <div id="viewmodal" style="display:none;"></div>
+
 </main>
 
 <script>
     function tampilkan() {
         $.ajax({
-            url: "<?= base_url('/admin/user/getdata') ?>",
+            url: "<?= base_url('admin/user/getdata') ?>",
             dataType: "json",
             success: function(response) {
                 $('#viewdata').html(response.data);

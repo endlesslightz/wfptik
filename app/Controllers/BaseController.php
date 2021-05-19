@@ -54,6 +54,6 @@ class BaseController extends Controller
 		//--------------------------------------------------------------------
 		// E.g.: $this->session = \Config\Services::session();
 		// $this->variabel = "ini variabel protected dari Base Controller";
-
+		session();
 	}
 }

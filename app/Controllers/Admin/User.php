@@ -154,4 +154,90 @@ class User extends BaseController
             exit('Request salah');
         }
     }
+
+
+    public function geteditform($id)
+    {
+        if ($this->request->isAjax()) {
+            $userModel = new UserModel();
+            $item = $userModel->find($id);
+            $nama = explode(" ", $item['nama']);
+            $data = [
+                'id' => $item['id'],
+                'nama_depan' => $nama[0],
+                'nama_belakang' => $nama[1],
+                'alamat' => $item['alamat'],
+                'tempat_lahir' => $item['tempat_lahir'],
+                'tanggal_lahir' => $item['tanggal_lahir'],
+                'jenis_kelamin' => $item['jenis_kelamin'],
+                'telepon' => $item['telepon'],
+                'email' => $item['email'],
+                'username' => $item['username'],
+                'password' => $item['password'],
+                'avatar' => $item['avatar']
+            ];
+            $hasil = [
+                'data' => view('admin/user/edit', $data)
+            ];
+            echo json_encode($hasil);
+        } else {
+            exit('Data tidak dapat diload');
+        }
+    }
+
+    public function update($id)
+    {
+        if ($this->request->isAJAX()) {
+
+            $userModel = new UserModel();
+            $nama = $this->request->getVar('namadepan') . " " . $this->request->getVar('namabelakang');
+            if ($this->request->getFile('avatar')->getName() != '') {
+                $avatar = $this->request->getFile('avatar');
+                $namaavatar = $avatar->getRandomName();
+                $avatar->move(ROOTPATH . 'public/img/profil', $namaavatar);
+            } else {
+                $namaavatar = $this->request->getVar('avalama');
+            }
+            if ($this->request->getVar('password') != $this->request->getVar('passlama')) {
+                $pass = md5($this->request->getVar('password'));
+            } else {
+                $pass = $this->request->getVar('passlama');
+            }
+            $input = [
+                'id' => $id,
+                'nama' => $nama,
+                'alamat' => $this->request->getVar('alamat'),
+                'tempat_lahir' => $this->request->getVar('tempatlahir'),
+                'tanggal_lahir' => $this->request->getVar('tanggallahir'),
+                'jenis_kelamin' => $this->request->getVar('jeniskelamin'),
+                'telepon' => $this->request->getVar('telepon'),
+                'email' => $this->request->getVar('email'),
+                'username' => $this->request->getVar('username'),
+                'password' => $pass,
+                'avatar' => $namaavatar
+            ];
+            $userModel->save($input);
+            $pesan = [
+                'sukses' => 'Data anggota berhasil diupdate'
+            ];
+            echo json_encode($pesan);
+        } else {
+            exit('Request salah');
+        }
+    }
+
+    public function hapus($id)
+    {
+        if ($this->request->isAjax()) {
+            $userModel = new UserModel();
+            $userModel->delete($id);
+
+            $pesan = [
+                'sukses' => "Data anggota dengan ID=$id berhasil dihapus"
+            ];
+            echo json_encode($pesan);
+        } else {
+            exit('Data tidak dapat dihapus');
+        }
+    }
 }

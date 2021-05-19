@@ -21,7 +21,7 @@ $routes->setDefaultController('Home');
 $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
-$routes->setAutoRoute(true);
+$routes->setAutoRoute(false);
 
 /*
  * --------------------------------------------------------------------
@@ -32,9 +32,13 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'admin\dashboard::index');
+$routes->get('/admin/user', 'admin\user::index');
 $routes->get('/admin/user/create', 'admin\user::create');
 $routes->get('/admin/user/getdata', 'admin\user::getdata');
 $routes->get('/admin/user/getform', 'admin\user::getform');
+$routes->get('/admin/user/getform/(:segment)', 'admin\user::geteditform/$1');
+$routes->put('/admin/user/update/(:segment)', 'admin\user::update/$1');
+$routes->delete('/admin/user/hapus/(:segment)', 'admin\user::hapus/$1');
 $routes->post('/admin/user/insert', 'admin\user::insert');
 $routes->post('/admin/user/insertv2', 'admin\user::insertv2');
 $routes->get('/admin/user/(:segment)', 'admin\user::detail/$1');
