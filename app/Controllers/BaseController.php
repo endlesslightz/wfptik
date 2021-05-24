@@ -6,6 +6,7 @@ use CodeIgniter\Controller;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 use Psr\Log\LoggerInterface;
+use App\Models\UserModel;
 
 /**
  * Class BaseController
@@ -27,7 +28,7 @@ class BaseController extends Controller
 	 *
 	 * @var array
 	 */
-	protected $helpers = [];
+	protected $helpers = ['cookie'];
 
 	/**
 	 * Instance of the main Request object.
@@ -55,5 +56,16 @@ class BaseController extends Controller
 		// E.g.: $this->session = \Config\Services::session();
 		// $this->variabel = "ini variabel protected dari Base Controller";
 		session();
+		$cookie = get_cookie('username');
+		if (isset($cookie)) {
+			$userModel = new UserModel();
+			$auth = $userModel->where(['username' => $cookie])->first();
+			$sesi = [
+				'username'  	=> $auth['username'],
+				'id' 			=> $auth['id'],
+				'logged_in'     => TRUE
+			];
+			session()->set($sesi);
+		}
 	}
 }

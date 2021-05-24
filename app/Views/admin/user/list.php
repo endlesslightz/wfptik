@@ -20,8 +20,8 @@
                 <td><?= $item['username'] ?> </td>
                 <td><?= $item['email'] ?> </td>
                 <td><a class="btn btn-success" href="<?= base_url('admin/user/' . $item['username']); ?>">Detail</a>
-                    <a class="btn btn-info" href="#" onclick="edit('<?= $item['id'] ?>')">Edit</a>
-                    <a class="btn btn-danger" href="#" onclick="hapus('<?= $item['id'] ?>')">Hapus</a>
+                    <a class="btn btn-info" href="#" onclick="edit(<?= $item['id'] ?>)">Edit</a>
+                    <a class="btn btn-danger" href="#" onclick="hapus(<?= $item['id'] ?>)">Hapus</a>
 
                 </td>
             </tr>
@@ -46,11 +46,10 @@
         });
     });
 
-
     function edit(id) {
         $.ajax({
             type: "get",
-            url: "<?= base_url('/admin/user/getform/') ?>/" + id,
+            url: "<?= base_url('/admin/user/getform') ?>/" + id,
             dataType: "json",
             success: function(response) {
                 $('#viewmodal').html(response.data).show();
@@ -59,7 +58,7 @@
         });
     }
 
-    function hapus(id) {
+    function hapus(id, uname) {
         Swal.fire({
             title: 'Hapus Data',
             text: `Apakah Anda yakin akan menghapus data dengan ID=${id}?`,

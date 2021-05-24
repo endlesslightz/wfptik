@@ -7,7 +7,7 @@
             </div>
             <div class="modal-body">
 
-                <form id="form" action="user/update/<?= $id ?>" enctype="multipart/form-data">
+                <form id="form" action="user/update/<?= $id ?>" method="post" enctype="multipart/form-data">
                     <input type="hidden" name="_method" value="PUT">
                     <?= csrf_field(); ?>
                     <div class="row mb-4">

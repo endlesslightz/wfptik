@@ -155,7 +155,6 @@ class User extends BaseController
         }
     }
 
-
     public function geteditform($id)
     {
         if ($this->request->isAjax()) {
@@ -188,7 +187,6 @@ class User extends BaseController
     public function update($id)
     {
         if ($this->request->isAJAX()) {
-
             $userModel = new UserModel();
             $nama = $this->request->getVar('namadepan') . " " . $this->request->getVar('namabelakang');
             if ($this->request->getFile('avatar')->getName() != '') {
@@ -198,11 +196,13 @@ class User extends BaseController
             } else {
                 $namaavatar = $this->request->getVar('avalama');
             }
+
             if ($this->request->getVar('password') != $this->request->getVar('passlama')) {
                 $pass = md5($this->request->getVar('password'));
             } else {
                 $pass = $this->request->getVar('passlama');
             }
+
             $input = [
                 'id' => $id,
                 'nama' => $nama,
