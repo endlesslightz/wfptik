@@ -34,7 +34,7 @@
     <div class="limiter">
         <div class="container-login100" style="background-image: url('<?= base_url('login') ?>/images/bg-01.jpg');">
             <div class="wrap-login100">
-                <form class="login100-form validate-form" method="post" action="auth">
+                <form class="login100-form validate-form" method="post" action="cek">
                     <?= csrf_field() ?>
                     <span class="login100-form-logo">
                         <i class="zmdi zmdi-landscape"></i>

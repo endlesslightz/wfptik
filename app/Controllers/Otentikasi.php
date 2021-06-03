@@ -30,14 +30,6 @@ class Otentikasi extends BaseController
 				session()->set($sesi);
 				$remember = $this->request->getVar('rememberme');
 				if (isset($remember)) {
-					// $cookie = [
-					// 	'name'   => 'username',
-					// 	'value'  => $auth['username'],
-					// 	'expire' => time() + (86400 * 15),
-					// 	'path'	 => '/'
-
-					// ];
-					// set_cookie($cookie);
 					$nama = 'username';
 					$nilai = $auth['username'];
 					$durasi = time() + (86400 * 15);

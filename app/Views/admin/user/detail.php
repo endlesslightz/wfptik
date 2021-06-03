@@ -44,7 +44,7 @@
                         <div class="col-md-4">
                             <div class="row">
                                 <div class="col-md-8 offset-md-2 ">
-                                    <img src="/img/profil/<?= $item['avatar'] ?>" alt="" width="100%">
+                                    <img src="<?= $item['avatar'] ?>" alt="" width="100%">
                                 </div>
                             </div>
                             <div class="row mt-4">

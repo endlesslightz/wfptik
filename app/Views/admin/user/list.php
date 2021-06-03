@@ -16,7 +16,7 @@
         foreach ($list as $item) { ?>
             <tr>
                 <td><?= $no++ ?></td>
-                <td><img src="/img/profil/<?= $item['avatar'] ?>" alt="" width="100px"></td>
+                <td><img src="<?= $item['avatar'] ?>" alt="" width="100px"></td>
                 <td><?= $item['username'] ?> </td>
                 <td><?= $item['email'] ?> </td>
                 <td><a class="btn btn-success" href="<?= base_url('admin/user/' . $item['username']); ?>">Detail</a>

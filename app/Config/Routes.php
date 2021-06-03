@@ -46,10 +46,8 @@ $routes->get('/admin/dashboard', 'admin\dashboard::index', ['filter' => 'auth'])
 $routes->get('/admin/about', 'admin\about::index', ['filter' => 'auth']);
 
 $routes->get('/masuk', 'otentikasi::index', ['filter' => 'noauth']);
-$routes->post('/auth', 'otentikasi::login', ['filter' => 'noauth']);
+$routes->post('/cek', 'otentikasi::login', ['filter' => 'noauth']);
 $routes->get('/keluar', 'otentikasi::logout');
-// $routes->get('/admin/user2/(:any)', 'admin\user::detail2/$1');
-
 /*
  * --------------------------------------------------------------------
  * Additional Routing
